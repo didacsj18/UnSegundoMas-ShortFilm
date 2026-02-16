@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UN SEGUNDO M&Aacute;S - Short Film</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a00 40%, #3d1500 70%, #d45500 90%, #ff8c00 100%);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(transparent, #0a0a0a);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 60px rgba(255, 140, 0, 0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .hero .duration {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.1em;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ff8c00;
+            margin-bottom: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #b0b0b0;
+        }
+
+        /* Logline */
+        .logline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #d0d0d0;
+            line-height: 1.8;
+            border-left: 3px solid #ff8c00;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Character cards */
+        .character-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .character-card:hover {
+            border-color: #ff8c00;
+        }
+
+        .character-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .character-age {
+            font-size: 0.85rem;
+            color: #ff8c00;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .character-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .character-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        .character-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.85rem;
+            width: 6px;
+            height: 6px;
+            background: #ff8c00;
+            border-radius: 50%;
+        }
+
+        /* Act dividers */
+        .act {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .act-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .act-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .act-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .act-duration {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* Scene blocks */
+        .scene {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #111;
+            border-radius: 8px;
+            border-left: 3px solid #222;
+        }
+
+        .scene.key-scene {
+            border-left-color: #ff8c00;
+            background: #151005;
+        }
+
+        .scene-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .scene ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scene li {
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .scene li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: #444;
+        }
+
+        .scene .emphasis {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        /* Dialogue */
+        .dialogue {
+            margin: 1rem 0;
+            padding: 1rem 1.5rem;
+            background: #0d0d0d;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .dialogue-line {
+            margin: 0.6rem 0;
+        }
+
+        .dialogue-line .who {
+            font-weight: 600;
+            color: #ff8c00;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .dialogue-line .says {
+            color: #ccc;
+            margin-left: 0.5rem;
+        }
+
+        .dialogue-line .direction {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Production note */
+        .prod-note {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+            padding: 0.75rem 1rem;
+            background: #0d0d0d;
+            border-radius: 4px;
+            margin-top: 1rem;
+            border: 1px dashed #222;
+        }
+
+        .prod-note::before {
+            content: 'PROD';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: #444;
+            margin-right: 0.5rem;
+            padding: 2px 6px;
+            border: 1px solid #333;
+            border-radius: 3px;
+        }
+
+        /* Flashback */
+        .flashback {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+
+        .flashback-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Epilogue */
+        .epilogue-time {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #ff8c00;
+            text-align: center;
+            margin: 2rem 0;
+            opacity: 0.7;
+        }
+
+        .final-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #888;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        /* Note written by Leo */
+        .leo-note {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ff8c00;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #332200;
+            border-radius: 8px;
+            background: #110d00;
+        }
+
+        /* Production section */
+        .production-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .production-grid { grid-template-columns: 1fr; }
+        }
+
+        .prod-card {
+            background: #111;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .prod-card h4 {
+            margin-top: 0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .prod-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .prod-card li {
+            padding: 0.3rem 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .prod-card li strong {
+            color: #ccc;
+        }
+
+        /* Warning box */
+        .warning {
+            background: #1a0a00;
+            border: 1px solid #ff8c00;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #ffaa44;
+        }
+
+        .warning strong {
+            color: #ff8c00;
+        }
+
+        /* Shooting schedule */
+        .schedule {
+            margin: 1.5rem 0;
+        }
+
+        .schedule-day {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .schedule-day:last-child { border-bottom: none; }
+
+        .day-label {
+            font-weight: 700;
+            color: #ff8c00;
+            font-size: 0.85rem;
+            min-width: 50px;
+            padding-top: 2px;
+        }
+
+        .day-content {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Visual tone */
+        .tone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .tone-grid { grid-template-columns: 1fr; }
+        }
+
+        .tone-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tone-card.act1 {
+            background: linear-gradient(135deg, #111 0%, #1a1a2a 100%);
+            border: 1px solid #222;
+        }
+
+        .tone-card.act2 {
+            background: linear-gradient(135deg, #1a1a10 0%, #2a2510 100%);
+            border: 1px solid #332;
+        }
+
+        .tone-card.act3 {
+            background: linear-gradient(135deg, #1a1005 0%, #3d1500 100%);
+            border: 1px solid #552200;
+        }
+
+        .tone-card .tone-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.75rem;
+        }
+
+        .tone-card .tone-color {
+            font-weight: 600;
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tone-card .tone-camera {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .references {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .ref-tag {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .ref-tag strong {
+            color: #ccc;
+        }
+
+        /* Separator */
+        .sep {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #333, transparent);
+            margin: 4rem 0;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            animation: bounce 2s infinite;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <p class="subtitle">Short Film</p>
+        <h1>Un Segundo M&aacute;s</h1>
+        <p class="duration">Estructura optimizada &middot; 12-18 minutos</p>
+        <div class="scroll-indicator">&darr; scroll &darr;</div>
+    </div>
+
+    <div class="container">
+
+        <!-- LOGLINE -->
+        <section>
+            <div class="section-label">Logline</div>
+            <div class="logline">
+                Un chico de 21 a&ntilde;os cuya vida se derrumba en un solo d&iacute;a decide escapar a ver un atardecer &uacute;nico desde una monta&ntilde;a. En el camino conoce a un desconocido cuyo secreto le ense&ntilde;ar&aacute; que los problemas que cree insuperables son, en realidad, el privilegio de estar vivo.
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <!-- PERSONAJES -->
+        <section>
+            <div class="section-label">Personajes</div>
+            <h2>Qui&eacute;n cuenta esta historia</h2>
+
+            <div class="character-card">
+                <div class="character-name">MARC</div>
+                <div class="character-age">21 a&ntilde;os &mdash; Protagonista</div>
+                <ul>
+                    <li>Estudia ADE en 3&ordm;, sin vocaci&oacute;n. Entr&oacute; porque &ldquo;era lo seguro&rdquo;.</li>
+                    <li>Hace pr&aacute;cticas en una consultora gris donde es el &uacute;ltimo mono.</li>
+                    <li>Padre exigente, ex-empresario, proyecta sus frustraciones en Marc.</li>
+                    <li>Marc NO es un rebelde. Es un chico bueno que obedece, y ese es su problema.</li>
+                    <li><strong>Detalle visual:</strong> siempre lleva auriculares puestos &mdash; es su escudo contra el mundo.</li>
+                </ul>
+            </div>
+
+            <div class="character-card">
+                <div class="character-name">LEO</div>
+                <div class="character-age">23-25 a&ntilde;os &mdash; El desconocido</div>
+                <ul>
+                    <li>Aparenta ser alguien libre, despreocupado, incluso irritantemente optimista.</li>
+                    <li>Habla como si cada momento fuera importante (porque para &eacute;l lo es).</li>
+                    <li>Lleva una mochila peque&ntilde;a con muy pocas cosas (contraste: Marc carga con todo).</li>
+                    <li><strong>Detalle clave:</strong> tiene una libreta/lista que consulta de vez en cuando pero no ense&ntilde;a.</li>
+                    <li>NO dice por qu&eacute; va a la monta&ntilde;a hasta el final.</li>
+                </ul>
+            </div>
+
+            <div class="character-card">
+                <div class="character-name">PADRE DE MARC</div>
+                <div class="character-age">50s &mdash; Secundario</div>
+                <ul>
+                    <li>No es un villano. Es un hombre asustado que cree que la seguridad econ&oacute;mica lo es todo.</li>
+                    <li>Solo aparece en 2-3 escenas cortas pero su presencia se siente siempre.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <!-- ACTO 1 -->
+        <section>
+            <div class="section-label">Estructura</div>
+            <h2>Tres actos</h2>
+
+            <div class="act">
+                <div class="act-header">
+                    <div class="act-number">01</div>
+                    <div>
+                        <div class="act-title">El derrumbe</div>
+                        <div class="act-duration">4-5 minutos</div>
+                    </div>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Secuencia de apertura &mdash; La rutina</div>
+                    <p class="emphasis" style="color: #666; font-size: 0.85rem;">Sin di&aacute;logo. Solo m&uacute;sica / sonido ambiente.</p>
+                    <ul>
+                        <li>MARC se despierta. Alarma a las 6:45. Habitaci&oacute;n ordenada pero sin personalidad.</li>
+                        <li>Desayuna solo. El padre lee el peri&oacute;dico, no le mira.</li>
+                        <li>Bus/metro hacia la universidad. Auriculares puestos. Mirada perdida.</li>
+                        <li><em class="emphasis">Establecemos visualmente que Marc es un fantasma en su propia vida.</em></li>
+                    </ul>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Universidad &mdash; El examen</div>
+                    <ul>
+                        <li>Marc sale del examen. Mira el m&oacute;vil: mensaje del grupo &ldquo;&iquest;qu&eacute; tal?&rdquo; &mdash; &eacute;l no contesta.</li>
+                        <li>Nota del profesor publicada online o en tablero: <strong>SUSPENSO</strong>.</li>
+                        <li>Marc se queda mirando la nota. No reacciona por fuera. Por dentro se rompe.</li>
+                    </ul>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Consultora &mdash; El despido</div>
+                    <ul>
+                        <li>Marc llega a la oficina. Su jefe le llama.</li>
+                        <li>No necesitamos o&iacute;r toda la conversaci&oacute;n. Vemos a Marc a trav&eacute;s del cristal de la sala de reuniones, el jefe gesticulando. Marc asintiendo.</li>
+                        <li>Sale con una caja peque&ntilde;a / carpeta. Un compa&ntilde;ero le mira con l&aacute;stima, otro ni le mira.</li>
+                    </ul>
+                    <div class="prod-note">Esto se puede rodar en cualquier oficina/coworking prestado.</div>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Casa &mdash; El padre</div>
+                    <ul>
+                        <li>Marc llega a casa. El padre ya lo sabe (la universidad le ha enviado las notas, o Marc se lo dice).</li>
+                    </ul>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Padre:</span> <span class="says">&ldquo;Tres a&ntilde;os para esto. Tres a&ntilde;os tirados. &iquest;Y las pr&aacute;cticas?&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="says">&ldquo;Me han...&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Padre:</span> <span class="says">&ldquo;No me lo digas.&rdquo;</span> <span class="direction">(pausa)</span> <span class="says">&ldquo;Me haces quedar como un idiota, Marc. Yo te consegu&iacute; ese puesto.&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="direction">(silencio)</span></div>
+                        <div class="dialogue-line"><span class="who">Padre:</span> <span class="says">&ldquo;Vete a tu habitaci&oacute;n y piensa en qu&eacute; vas a hacer con tu vida.&rdquo;</span></div>
+                    </div>
+                    <ul>
+                        <li>Marc no grita, no llora, no protesta. Eso es lo m&aacute;s duro: ya no le queda ni la energ&iacute;a para defenderse.</li>
+                    </ul>
+                </div>
+
+                <div class="scene key-scene">
+                    <div class="scene-title">El coche &mdash; EL COLAPSO &#9733;</div>
+                    <ul>
+                        <li>Marc sale de casa. Se mete en el coche.</li>
+                        <li>Conduce sin destino.</li>
+                        <li>Para en un sitio cualquiera (aparcamiento vac&iacute;o, carretera secundaria).</li>
+                        <li>Silencio total. Luego su respiraci&oacute;n se acelera.</li>
+                        <li><strong>EXPLOTA.</strong> Golpea el volante. Grita. Llora. Todo lo que ha contenido durante todo el d&iacute;a sale.</li>
+                        <li>Esta escena debe ser <strong>LARGA e INC&Oacute;MODA</strong>. No cortamos r&aacute;pido. Dejamos que el actor lo viva.</li>
+                    </ul>
+                    <div class="warning">
+                        <strong>2-3 minutos de puro acting. Sin m&uacute;sica. Solo Marc y su dolor.</strong> Esta es la escena que define al actor.
+                    </div>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">La radio / el m&oacute;vil</div>
+                    <ul>
+                        <li>Tras el colapso, Marc est&aacute; agotado. Apoya la cabeza en el volante.</li>
+                        <li>Enciende la radio o mira el m&oacute;vil sin pensar.</li>
+                        <li>Escucha/lee: <em>&ldquo;Esta noche, condiciones atmosf&eacute;ricas excepcionales permitir&aacute;n ver un atardecer hist&oacute;rico desde [monta&ntilde;a local]. Expertos dicen que la combinaci&oacute;n de luz no se repetir&aacute; en d&eacute;cadas.&rdquo;</em></li>
+                        <li>Marc se queda mirando hacia el horizonte. El sol est&aacute; bajando.</li>
+                        <li>Sin pensarlo, arranca el coche.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ACTO 2 -->
+            <div class="act">
+                <div class="act-header">
+                    <div class="act-number">02</div>
+                    <div>
+                        <div class="act-title">El camino</div>
+                        <div class="act-duration">5-7 minutos</div>
+                    </div>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Llegada al inicio de la ruta</div>
+                    <ul>
+                        <li>Marc aparca donde puede. No va preparado: zapatillas normales, sin agua, sin mochila.</li>
+                        <li>Empieza a subir por el camino.</li>
+                    </ul>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Encuentro con Leo</div>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="says">&ldquo;&iquest;T&uacute; tambi&eacute;n vas arriba?&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="direction">(seco)</span> <span class="says">&ldquo;S&iacute;.&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="says">&ldquo;Mejor ir acompa&ntilde;ado por si nos perdemos, &iquest;no?&rdquo;</span></div>
+                    </div>
+                    <ul>
+                        <li>Marc no quiere compa&ntilde;&iacute;a pero Leo no le da opci&oacute;n. No es pesado, simplemente est&aacute; ah&iacute;.</li>
+                    </ul>
+                </div>
+
+                <div class="scene key-scene">
+                    <div class="scene-title">El camino &mdash; Secuencia de convivencia &#9733;</div>
+                    <ul>
+                        <li>Suben juntos. Al principio Marc est&aacute; cerrado, monosil&aacute;bico.</li>
+                        <li>Leo habla sin presionar. Comenta cosas del paisaje, hace alguna broma tonta.</li>
+                    </ul>
+
+                    <h4>Momento clave 1: El agua</h4>
+                    <ul>
+                        <li>Leo le ofrece agua (Marc no ha tra&iacute;do). Marc acepta a rega&ntilde;adientes.</li>
+                    </ul>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="says">&ldquo;Siempre vengo preparado. Nunca sabes cu&aacute;ndo ser&aacute; la &uacute;ltima excursi&oacute;n.&rdquo;</span></div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; font-style: italic;">Marc no pilla la doble lectura. El espectador tampoco, todav&iacute;a.</p>
+
+                    <h4>Momento clave 2: La pausa</h4>
+                    <ul>
+                        <li>Hay un tramo dif&iacute;cil (rocas, pendiente). Leo se para un momento, respira hondo. Marc piensa que est&aacute; cansado.</li>
+                    </ul>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="says">&ldquo;&iquest;Est&aacute;s bien?&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="direction">(sonr&iacute;e)</span> <span class="says">&ldquo;S&iacute;, solo quer&iacute;a mirar esto un segundo m&aacute;s.&rdquo;</span></div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; font-style: italic;">Miramos lo que &eacute;l mira: un paisaje normal pero bonito. Leo lo ve como si fuera la &uacute;ltima vez.</p>
+
+                    <h4>Momento clave 3: Conversaci&oacute;n real</h4>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="says">&ldquo;Y t&uacute;, &iquest;por qu&eacute; subes?&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="direction">(pausa larga)</span> <span class="says">&ldquo;Porque hoy ha sido el peor d&iacute;a de mi vida.&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="direction">(sin dramatismo)</span> <span class="says">&ldquo;Vaya. Lo siento.&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="says">&ldquo;&iquest;Y t&uacute;?&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="direction">(sonr&iacute;e, esquiva)</span> <span class="says">&ldquo;Yo ten&iacute;a ganas de ver un buen atardecer.&rdquo;</span></div>
+                    </div>
+                </div>
+
+                <div class="flashback">
+                    <div class="flashback-label">&#9655; Flashbacks intercalados</div>
+                    <p style="color: #777; font-size: 0.9rem;">Mientras suben, Marc tiene flashes del d&iacute;a: la nota del examen, la cara del jefe, las palabras del padre. Cada vez se sienten <strong style="color:#aaa;">M&Aacute;S LEJOS</strong>. Como si la monta&ntilde;a le estuviera limpiando.</p>
+                </div>
+            </div>
+
+            <!-- ACTO 3 -->
+            <div class="act">
+                <div class="act-header">
+                    <div class="act-number">03</div>
+                    <div>
+                        <div class="act-title">La cima</div>
+                        <div class="act-duration">3-5 minutos</div>
+                    </div>
+                </div>
+
+                <div class="scene">
+                    <div class="scene-title">Llegada a la cima</div>
+                    <ul>
+                        <li>Llegan justo a tiempo. El cielo est&aacute; empezando a explotar de colores.</li>
+                        <li>Se sientan uno al lado del otro. Silencio.</li>
+                        <li>El atardecer es genuinamente espectacular.</li>
+                    </ul>
+                    <div class="prod-note">Esto HAY QUE RODARLO de verdad. Buscar el d&iacute;a perfecto. No hay excusa.</div>
+                </div>
+
+                <div class="scene key-scene">
+                    <div class="scene-title">La revelaci&oacute;n &#9733;</div>
+                    <ul>
+                        <li>Est&aacute;n en silencio mirando el sol.</li>
+                        <li>Leo saca la libreta. La abre. Marc la ve de reojo.</li>
+                        <li>Es una lista. Casi todo est&aacute; tachado. Solo queda un punto sin tachar: <strong>&ldquo;Ver el mejor atardecer del mundo.&rdquo;</strong></li>
+                        <li>Leo tacha la &uacute;ltima l&iacute;nea. Cierra la libreta. Sonr&iacute;e.</li>
+                        <li>Marc le mira. Lo entiende sin que Leo diga nada.</li>
+                    </ul>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Marc:</span> <span class="says">&ldquo;Leo...&rdquo;</span></div>
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="direction">(sin mirarle, mirando el sol)</span> <span class="says">&ldquo;Siete meses. Linfoma.&rdquo;</span> <span class="direction">(pausa)</span> <span class="says">&ldquo;No te lo digo para que te d&eacute; pena. Te lo digo para que sepas que hoy... el peor d&iacute;a de tu vida... ojal&aacute; yo tuviera mil d&iacute;as as&iacute;.&rdquo;</span></div>
+                    </div>
+                    <ul>
+                        <li>Silencio. Marc no puede hablar. L&aacute;grimas.</li>
+                        <li>Leo le mira y sonr&iacute;e. Sin tristeza. Con paz.</li>
+                    </ul>
+                    <div class="dialogue">
+                        <div class="dialogue-line"><span class="who">Leo:</span> <span class="says">&ldquo;Eh. Est&aacute; bastante bien este atardecer, &iquest;no?&rdquo;</span></div>
+                    </div>
+                    <ul>
+                        <li>Ambos se r&iacute;en entre l&aacute;grimas.</li>
+                        <li>El sol desaparece. Pantalla a negro lento.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- EPILOGO -->
+            <div class="act">
+                <div class="act-header">
+                    <div class="act-number">&infin;</div>
+                    <div>
+                        <div class="act-title">Ep&iacute;logo &mdash; El paseo</div>
+                        <div class="act-duration">1-2 minutos</div>
+                    </div>
+                </div>
+
+                <div class="epilogue-time">&ldquo;14 meses despu&eacute;s&rdquo;</div>
+
+                <div class="scene key-scene">
+                    <ul>
+                        <li>Atardecer. Paseo mar&iacute;timo.</li>
+                        <li>Marc corre (hace running). Lleva ropa c&oacute;moda, diferente energ&iacute;a. Est&aacute; vivo.</li>
+                        <li>Para en un punto del paseo. Mira el atardecer.</li>
+                        <li>Saca del bolsillo la libreta de Leo (se la qued&oacute; / se la dio).</li>
+                        <li>La abre. Ve la lista tachada. En la &uacute;ltima p&aacute;gina, algo que no hab&iacute;amos visto antes:</li>
+                    </ul>
+                    <div class="leo-note">
+                        &ldquo;PD: Deja de correr hacia donde otros te dicen.<br>Corre hacia donde t&uacute; quieras.&rdquo;
+                    </div>
+                    <ul>
+                        <li>Marc sonr&iacute;e. L&aacute;grimas pero sonrisa.</li>
+                        <li>Cierra la libreta. Mira el atardecer.</li>
+                        <li>Corte a negro.</li>
+                    </ul>
+                </div>
+
+                <div class="final-title">
+                    &ldquo;Para los que necesitan un peor d&iacute;a para empezar a vivir.&rdquo;
+                </div>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <!-- PRODUCCION -->
+        <section>
+            <div class="section-label">Producci&oacute;n</div>
+            <h2>Notas de producci&oacute;n</h2>
+
+            <div class="production-grid">
+                <div class="prod-card">
+                    <h4>Localizaciones</h4>
+                    <ul>
+                        <li>Habitaci&oacute;n + cocina/comedor</li>
+                        <li>Exterior universidad</li>
+                        <li>Interior oficina / coworking</li>
+                        <li>Interior coche</li>
+                        <li>Ruta de monta&ntilde;a + cima</li>
+                        <li>Paseo mar&iacute;timo</li>
+                    </ul>
+                </div>
+                <div class="prod-card">
+                    <h4>Equipo m&iacute;nimo</h4>
+                    <ul>
+                        <li>2 actores principales</li>
+                        <li>1 actor (padre) + 1-2 extras</li>
+                        <li>Tel&eacute;fono + Blackmagic app</li>
+                        <li>Gimbal</li>
+                        <li><strong>Micro de solapa inal&aacute;mbrico</strong></li>
+                        <li>Reflector plegable</li>
+                        <li>Tr&iacute;pode peque&ntilde;o</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>AUDIO:</strong> La app de Blackmagic graba buen v&iacute;deo pero el audio del tel&eacute;fono NO sirve para di&aacute;logos. Necesitas al menos un micro de solapa inal&aacute;mbrico (Rode Wireless Go o similar). Es la diferencia entre amateur y profesional.
+            </div>
+
+            <h3>M&uacute;sica</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.3rem 0; color: #999;">&#x2717; NO uses canciones con copyright (Wrecking Ball, etc.). El presupuesto no da.</li>
+                <li style="padding: 0.3rem 0; color: #999;">&#x2713; Opciones: <strong style="color:#ccc;">Artlist.io</strong> (~10&euro;/mes), <strong style="color:#ccc;">Epidemic Sound</strong>, o m&uacute;sica Creative Commons.</li>
+                <li style="padding: 0.3rem 0; color: #999;">&#x2713; Busca algo instrumental: piano + cuerdas, sutil. Menos es m&aacute;s.</li>
+                <li style="padding: 0.3rem 0; color: #ff8c00;">&#9733; La escena del colapso en el coche DEBE ser sin m&uacute;sica. Solo sonido real.</li>
+            </ul>
+
+            <h3>Rodaje del atardecer</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.3rem 0; color: #999;">&#x2022; Es el plano m&aacute;s importante del corto. NO lo dejes al azar.</li>
+                <li style="padding: 0.3rem 0; color: #999;">&#x2022; Usa apps como &ldquo;Golden Hour&rdquo; o &ldquo;Sun Surveyor&rdquo; para hora y direcci&oacute;n exacta.</li>
+                <li style="padding: 0.3rem 0; color: #999;">&#x2022; Ten al menos 2-3 d&iacute;as de margen por si el clima falla.</li>
+                <li style="padding: 0.3rem 0; color: #999;">&#x2022; Graba el atardecer REAL primero, luego inserta actores en planos separados.</li>
+            </ul>
+
+            <h3>Orden de rodaje</h3>
+            <div class="schedule">
+                <div class="schedule-day">
+                    <div class="day-label">D&iacute;a 1</div>
+                    <div class="day-content">Interiores (casa, oficina, universidad) + ep&iacute;logo paseo mar&iacute;timo al atardecer (Marc corriendo).</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-label">D&iacute;a 2</div>
+                    <div class="day-content">Ruta de monta&ntilde;a + caminata &mdash; se puede rodar con nubes.</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-label">D&iacute;a 3</div>
+                    <div class="day-content">Cima al atardecer + paseo mar&iacute;timo al atardecer. (D&iacute;a 4 de reserva por clima.)</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="sep"></div>
+
+        <!-- TONO VISUAL -->
+        <section>
+            <div class="section-label">Direcci&oacute;n visual</div>
+            <h2>Tono y referencias</h2>
+
+            <div class="tone-grid">
+                <div class="tone-card act1">
+                    <div class="tone-label">Acto 1</div>
+                    <div class="tone-color">Desaturado, fr&iacute;o, gris</div>
+                    <div class="tone-camera">C&aacute;mara est&aacute;tica, claustrofobia</div>
+                </div>
+                <div class="tone-card act2">
+                    <div class="tone-label">Acto 2</div>
+                    <div class="tone-color">Gana color progresivamente</div>
+                    <div class="tone-camera">C&aacute;mara en movimiento, gimbal</div>
+                </div>
+                <div class="tone-card act3">
+                    <div class="tone-label">Acto 3</div>
+                    <div class="tone-color">Explosi&oacute;n de color c&aacute;lido</div>
+                    <div class="tone-camera">Planos abiertos, respiraci&oacute;n</div>
+                </div>
+            </div>
+
+            <div class="references">
+                <div class="ref-tag"><strong>Into the Wild</strong> &mdash; la b&uacute;squeda</div>
+                <div class="ref-tag"><strong>The Bucket List</strong> &mdash; la lista</div>
+                <div class="ref-tag"><strong>Manchester by the Sea</strong> &mdash; el dolor contenido</div>
+            </div>
+        </section>
+
+        <br><br>
+        <p style="text-align: center; color: #333; font-size: 0.8rem;">UN SEGUNDO M&Aacute;S &mdash; Pre-producci&oacute;n v1 &mdash; 2026</p>
+        <br><br>
+
+    </div>
+
+</body>
+</html>
